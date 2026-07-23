@@ -1,0 +1,50 @@
+name: Release Addon
+
+on:
+  push:
+    tags:
+      - "b5.1*"
+
+jobs:
+  build-addon:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build addon zips
+        run: |
+          set -e
+          mkdir -p build
+          VERSION="${{ github.ref_name }}"
+
+          for dir in extensions/platform_dependency/*; do
+            os=$(basename "$dir")
+            echo "Building for $os version..."
+
+            tmp_addon="addon_math_anim"
+            rm -rf "$tmp_addon"
+            cp -r extensions/b5.1 "$tmp_addon"
+
+            cp "$dir/b5.1/"*.toml "$tmp_addon/"
+            cp "$dir/b5.1/wheels/"* "$tmp_addon/wheels/"
+
+            zip -r "build/math_anim_${os}_${VERSION}.zip" "$tmp_addon" \
+              -x "tmp_addon/.DS_Store" \
+              -x "tmp_addon/__pycache__/*"
+          done
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/*.zip
+          tag_name: v${{ github.run_number }}
+          name: "Blender Math Anim v${{ github.run_number }}"
+          body: |
+            ## 📢 Updates 
+              - several preset animations added, including light/color flow, random transfrom, etc.
+              - many preset anim curve generators, like wiggle, shake, bounce, etc.
+              - new ODE solver added, with `stop` feature.
+              - support branch plotting for parameter function and ODE function.
+            
+          generate_release_notes: true

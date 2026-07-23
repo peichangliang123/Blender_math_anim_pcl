@@ -14,14 +14,11 @@ with Blender, the unleashing power will enable you amaze the world.
 If you like the project, please give me a star! ⭐
 
 #### ~~Version for Blender 4.4 release at 100 ⭐~~ ✅
-#### Version for Blender 5.0 release at **200 ⭐**
-
-Share to unlock early releases 😏
+#### ~~Version for Blender 5.1+ release~~ ✅
 
 ### 🎉 Thanks for 100 ⭐!
 
 **Thanks everyone for the 100 ⭐ even before seeing the product!**
-The **version for Blender 4.4 is now released**, and the **version for Blender 5.0 is on the journey to release when at 200 ⭐**.
 If you think it's cool, please share it with others!
 
 ---
@@ -41,7 +38,7 @@ The paid version will continue to receive:
 
 Please consider supporting the project if you like it and want to see it grow ❤️
 
-**New features in lastest paid version:**
+**New features in lastest version:**
 - Preset light/color flow animations
 - Preset random transform animations (rotation, scaling, offset)
 - Many preset curves (wiggle, shake, bounce, etc...) for anim curve to use
